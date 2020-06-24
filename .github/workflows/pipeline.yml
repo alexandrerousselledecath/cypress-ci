@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  cypress-ga-1-cache:
+  cypress-ga-1-cache-ci:
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
@@ -29,7 +29,37 @@ jobs:
               ${{ runner.os }}-build-${{ env.cache-name }}-
               ${{ runner.os }}-build-
               ${{ runner.os }}-
-        - run: npm ci --prefer-offline --no-audit
+        - run: npm ci --no-audit
+        - uses: cypress-io/github-action@v2
+          with:
+            install: false
+            browser: chrome
+            config-file: ./cypress.json
+
+  cypress-ga-1-cache-install:
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     node: [10, 12]
+    name: Cypress npm ci cache
+    steps:
+        - uses: actions/checkout@v1
+        - uses: actions/setup-node@v1
+          with:
+            # node-version: ${{ matrix.node }}
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
+        - uses: actions/cache@v2
+          env:
+            cache-name: cache-node-modules
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-build-${{ env.cache-name }}-
+              ${{ runner.os }}-build-
+              ${{ runner.os }}-
+        - run: npm install --no-audit
         - uses: cypress-io/github-action@v2
           with:
             install: false
