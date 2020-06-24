@@ -4,13 +4,6 @@ on:
   pull_request:
     branches:
 			- master
-			
-# Global environment variables - some of them can be overriden in build steps
-env:
-  # Project
-  REF: ${{ github.ref }}
-  PR_NUMBER: ${{ github.event.pull_request.number }}
-  REPOSITORY: ${{ github.repository }}
 
 jobs:
   build:
