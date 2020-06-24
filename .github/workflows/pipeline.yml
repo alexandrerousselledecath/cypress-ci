@@ -8,11 +8,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Cypress Github Actions on Chrome
     steps:
-      - name: Checkout sources
         uses: actions/checkout@v1
-      - name: Configure Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
