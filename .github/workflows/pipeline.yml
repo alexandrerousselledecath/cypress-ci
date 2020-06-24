@@ -41,7 +41,7 @@ jobs:
     # strategy:
     #   matrix:
     #     node: [10, 12]
-    name: Cypress npm ci cache
+    name: Cypress npm install cache
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
