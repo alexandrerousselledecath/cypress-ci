@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cypress-config: ["a", "c", "f", "l", "m", "n"]
+        cypress-config: ["a", "c", "f"]
     name: Cypress GA 2
     steps:
         - uses: actions/checkout@v1
