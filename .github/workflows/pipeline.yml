@@ -8,15 +8,16 @@ on:
 jobs:
   cypress-ga-1-cache:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [10, 12]
+    # strategy:
+    #   matrix:
+    #     node: [10, 12]
     name: Cypress npm node v${{ matrix.node }}
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
           with:
-            node-version: ${{ matrix.node }}
+            # node-version: ${{ matrix.node }}
+            node-version: 12
             registry-url: https://registry.npmjs.org/
         - uses: actions/cache@v2
           env:
@@ -37,15 +38,16 @@ jobs:
   
   cypress-ga-1-no-cache:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [10, 12]
+    # strategy:
+    #   matrix:
+    #     node: [10, 12]
     name: Cypress GA node v${{ matrix.node }}
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
           with:
-            node-version: ${{ matrix.node }}
+            # node-version: ${{ matrix.node }}
+            node-version: 12
             registry-url: https://registry.npmjs.org/
         - uses: cypress-io/github-action@v2
           with:
