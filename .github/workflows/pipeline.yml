@@ -25,7 +25,10 @@ jobs:
   
   cypress-ga-2:
     runs-on: ubuntu-latest
-    name: Cypress GA 2 node v${{ matrix.node }}
+    strategy:
+      matrix:
+        cypress-config: ["a", "c", "f", "l", "m", "n"]
+    name: Cypress GA 2
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
@@ -34,5 +37,5 @@ jobs:
             registry-url: https://registry.npmjs.org/
         - uses: cypress-io/github-action@v2
           with:
-            browser: firefox
-            config-file: ./cypress-2.json
+            browser: chrome
+            config-file: ./cypress-${{ matrix.cypress-config }}.json
