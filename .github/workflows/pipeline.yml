@@ -52,19 +52,19 @@ jobs:
             browser: chrome
             config-file: ./cypress.json
   
-  cypress-ga-3:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        cypress-config: ["a", "c"]
-    name: Cypress GA 2
-    steps:
-        - uses: actions/checkout@v1
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
-        - uses: cypress-io/github-action@v2
-          with:
-            browser: chrome
-            config-file: ./cypress-${{ matrix.cypress-config }}.json
+  # cypress-ga-3:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       cypress-config: ["a", "c"]
+  #   name: Cypress GA 2
+  #   steps:
+  #       - uses: actions/checkout@v1
+  #       - uses: actions/setup-node@v1
+  #         with:
+  #           node-version: 12
+  #           registry-url: https://registry.npmjs.org/
+  #       - uses: cypress-io/github-action@v2
+  #         with:
+  #           browser: chrome
+  #           config-file: ./cypress-${{ matrix.cypress-config }}.json
