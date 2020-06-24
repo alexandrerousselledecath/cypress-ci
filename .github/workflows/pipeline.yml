@@ -3,15 +3,15 @@ name: pipeline
 on:
   pull_request:
     branches:
-			- master
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-		steps:
-			- name: Checkout sources
-				uses: actions/checkout@v1
-			- name: Configure Node.js 12
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v1
+      - name: Configure Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
