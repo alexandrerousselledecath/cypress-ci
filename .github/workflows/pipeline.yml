@@ -6,12 +6,12 @@ on:
       - master
 
 jobs:
-  cypress-ga-1:
+  cypress-ga-1-cache:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [10, 12]
-    name: Cypress GA 1 node v${{ matrix.node }}
+    name: Cypress npm node v${{ matrix.node }}
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
@@ -35,11 +35,28 @@ jobs:
             browser: chrome
             config-file: ./cypress.json
   
-  cypress-ga-2:
+  cypress-ga-1-no-cache:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cypress-config: ["a", "c", "f"]
+        node: [10, 12]
+    name: Cypress GA node v${{ matrix.node }}
+    steps:
+        - uses: actions/checkout@v1
+        - uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node }}
+            registry-url: https://registry.npmjs.org/
+        - uses: cypress-io/github-action@v2
+          with:
+            browser: chrome
+            config-file: ./cypress.json
+  
+  cypress-ga-3:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cypress-config: ["a", "c"]
     name: Cypress GA 2
     steps:
         - uses: actions/checkout@v1
