@@ -2,7 +2,7 @@
   "name": "cypress-test",
 	"version": "1.0.0",
 	"dependencies": {},
-  "devDependencies": {
+  "optionalDependencies": {
     "cypress": "^4.9.0"
   },
   "scripts": {

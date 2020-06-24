@@ -18,8 +18,10 @@ jobs:
           with:
             node-version: ${{ matrix.node }}
             registry-url: https://registry.npmjs.org/
+        - run: npm ci
         - uses: cypress-io/github-action@v2
           with:
+            install: false
             browser: chrome
             config-file: ./cypress.json
   
