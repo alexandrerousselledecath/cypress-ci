@@ -11,12 +11,12 @@ jobs:
     strategy:
       matrix:
         node: [10, 12]
-    name: Cypress Github Actions - Node v${{ matrix.node }}
+    name: Cypress GA node v${{ matrix.node }}
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
           with:
-            node-version: 12
+            node-version: ${{ matrix.node }}
             registry-url: https://registry.npmjs.org/
         - uses: cypress-io/github-action@v2
           with:
