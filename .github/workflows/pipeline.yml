@@ -11,7 +11,7 @@ jobs:
     # strategy:
     #   matrix:
     #     node: [10, 12]
-    name: Cypress npm node v${{ matrix.node }}
+    name: Cypress npm ci cache
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
@@ -29,7 +29,7 @@ jobs:
               ${{ runner.os }}-build-${{ env.cache-name }}-
               ${{ runner.os }}-build-
               ${{ runner.os }}-
-        - run: npm ci
+        - run: npm ci --prefer-offline --no-audit
         - uses: cypress-io/github-action@v2
           with:
             install: false
@@ -41,7 +41,7 @@ jobs:
     # strategy:
     #   matrix:
     #     node: [10, 12]
-    name: Cypress GA node v${{ matrix.node }}
+    name: Cypress GA cypress install
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
