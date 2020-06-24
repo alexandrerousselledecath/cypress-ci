@@ -34,5 +34,5 @@ jobs:
             registry-url: https://registry.npmjs.org/
         - uses: cypress-io/github-action@v2
           with:
-            browser: edge
+            browser: firefox
             config-file: ./cypress-2.json
