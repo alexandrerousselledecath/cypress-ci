@@ -8,7 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Cypress Github Actions on Chrome
+    strategy:
+      matrix:
+        node: [10, 12]
+    name: Cypress Github Actions - Node v${{ matrix.node }}
     steps:
         - uses: actions/checkout@v1
         - uses: actions/setup-node@v1
