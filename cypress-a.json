@@ -1,0 +1,5 @@
+{
+	"video": false,
+	"numTestsKeptInMemory": 100,
+	"testFiles": "**/[a]*.*"
+}
