@@ -5,6 +5,9 @@
   "optionalDependencies": {
     "cypress": "^4.9.0"
   },
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^2.5.0"
+  },
   "scripts": {
     "cy:open": "cypress open"
   },
