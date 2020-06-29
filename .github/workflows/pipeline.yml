@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  cypress-npm-cache:
+  cypress-npm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
