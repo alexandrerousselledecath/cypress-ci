@@ -49,8 +49,7 @@ jobs:
 
   cypress-docker:
     runs-on: ubuntu-latest
+    container: cypress/included:4.9.0
     steps:
-      container: cypress/included:4.9.0
-      steps:
-        - uses: actions/checkout@v1
-        - run: cypress run
+      - uses: actions/checkout@v1
+      - run: cypress run
