@@ -2,6 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 // Given
 Given('a user visits actions page', () => { cy.visit('https://example.cypress.io/commands/actions') });
+
 When('the user types into DOM elements', () => { 
 	cy.get('.action-email')
 		.type('fake@email.com').should('have.value', 'fake@email.com')
