@@ -14,7 +14,8 @@ When('the user alias a DOM element for later use', () => {
 });
 
 When('the user alias a route for later use', () => { 
-	cy.get('.action-focus').focus()
-		.should('have.class', 'focus')
-		.prev().should('have.attr', 'style', 'color: orange;');
+	cy.server()
+	cy.route('GET', 'comments/*').as('getComment')
+	cy.get('.network-btn').click()
+	cy.wait('@getComment').its('status').should('eq', 200)
 });
