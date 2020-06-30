@@ -20,9 +20,9 @@ on:
       - master
 ```
 
-You will see multiples jobs into the CI pipeline. There are all differents and describe several ways to do your management with Cypress and GitHub Actions (Cypress GitHub Action or npm). I also added Cucumber to give you an example of how it can be implemented and a `docker` way with the Cypress GitHub Action for developers who using npm is an obstacle.
+You will see multiples jobs into the CI pipeline. There are all differents and describe several ways to do your management with Cypress and GitHub Actions (Cypress GitHub Action or npm). I also added Cucumber to give you an example of how it can be implemented, and a `docker` way with the Cypress GitHub Action for developers who using npm is an obstacle.
 
-For parallelism, I make two different jobs : one just with Cypress, one with Cucumber, with both using matrix strategy provides by GitHub Actions (and by playing with glob patterns).
+For parallelism, I make two different jobs : one just with Cypress, one with Cucumber, with both using matrix strategy provided by GitHub Actions (I used glob patterns).
 
 ```yaml
 jobs:
