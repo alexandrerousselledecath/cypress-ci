@@ -16,7 +16,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
-          config-file: ./cypress.json
+          config-file: cypress.json
           headless: true
   
   # to parallelize tests executions 
@@ -30,6 +30,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
+          config-file: cypress.json
           spec: "**/${{ matrix.cypress-config }}*.js"
           headless: true
 
