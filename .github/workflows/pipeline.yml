@@ -40,7 +40,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
-          spec: "**/[${{ matrix.cypress-config }}]*.js"
+          spec: "**/${{ matrix.cypress-config }}*.js"
           headless: true
 
   cypress-docker:
@@ -92,5 +92,5 @@ jobs:
         with:
           browser: chrome
           config-file: cucumber.json
-          spec: "**/[${{ matrix.cucumber-config }}]*.js"
+          spec: "**/${{ matrix.cucumber-config }}*.js"
           headless: true
