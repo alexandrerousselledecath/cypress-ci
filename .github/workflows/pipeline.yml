@@ -81,6 +81,7 @@ jobs:
           headless: true
 
   cucumber-config-matrix:
+    needs: [cucumber]
     runs-on: ubuntu-latest
     strategy:
       matrix:
