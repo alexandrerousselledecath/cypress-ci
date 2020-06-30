@@ -9,7 +9,8 @@
     "cypress-cucumber-preprocessor": "^2.5.0"
   },
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cucumber:run": "cypress run --spec \"**/*.feature\" --browser chrome --headless -C \"cucumber.json\""
   },
   "repository": {
     "type": "git",
