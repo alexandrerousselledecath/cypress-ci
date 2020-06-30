@@ -9,15 +9,10 @@ on:
       - master
 
 jobs:
-  cypress-npm:
+  cypress:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
       - uses: cypress-io/github-action@v2
         with:
           install: false
@@ -33,10 +28,6 @@ jobs:
         cypress-config: ["a", "c"]
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
@@ -70,10 +61,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
@@ -92,5 +79,5 @@ jobs:
         with:
           browser: chrome
           config-file: cucumber.json
-          spec: "**/${{ matrix.cucumber-config }}*.js"
+          spec: "**/${{ matrix.cucumber-config }}*.feature"
           headless: true
