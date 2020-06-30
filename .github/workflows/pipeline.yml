@@ -92,5 +92,5 @@ jobs:
         with:
           browser: chrome
           config-file: cucumber.json
-          spec: "**/[${{ matrix.cypress-config }}]*.js"
+          spec: "**/[${{ matrix.cucumber-config }}]*.js"
           headless: true
