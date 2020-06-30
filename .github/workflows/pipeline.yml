@@ -45,6 +45,9 @@ jobs:
     container: cypress/included:4.9.0
     steps:
       - uses: actions/checkout@v2.3.1
+      # npm ci only for cypress-cucumber plugin that is present in plugins/index.js
+      # if no install, cannot find module error is thrown
+      - run: npm ci
       - run: npm run cy:run
 
   cypress-cucumber:
