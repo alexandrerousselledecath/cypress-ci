@@ -25,3 +25,29 @@ When('the user types into DOM elements', () => {
 		.type('disabled error checking', { force: true })
 		.should('have.value', 'disabled error checking');
 });
+
+When('the user focus on a DOM element', () => { 
+	cy.get('.action-focus').focus()
+	.should('have.class', 'focus')
+	.prev().should('have.attr', 'style', 'color: orange;');
+});
+
+When('the user blur off a DOM element', () => { 
+	cy.get('.action-blur').type('About to blur').blur()
+	.should('have.class', 'error')
+	.prev().should('have.attr', 'style', 'color: red;');
+});
+
+When('the user clears an input or textarea element', () => { 
+	cy.get('.action-clear').type('Clear this text')
+	.should('have.value', 'Clear this text')
+	.clear()
+	.should('have.value', '')
+});
+
+When('the user submit a form', () => { 
+	cy.get('.action-form')
+	.find('[type="text"]').type('HALFOFF');
+	cy.get('.action-form').submit()
+	.next().should('contain', 'Your form has been submitted!');
+});
