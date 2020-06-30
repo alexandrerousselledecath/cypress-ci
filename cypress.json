@@ -1,4 +1,4 @@
 {
   "video": false,
-  "testFiles": "**/[a,c,f]*.*"
+  "testFiles": "**/[a,c,f]*.js"
 }
