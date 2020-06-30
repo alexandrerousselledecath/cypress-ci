@@ -1,4 +1,4 @@
 {
   "video": false,
-  "testFiles": ["**/*.{feature,features}"]
+  "testFiles": "**/*.{feature,features}"
 }

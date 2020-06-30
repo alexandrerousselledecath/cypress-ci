@@ -9,21 +9,17 @@ on:
       - master
 
 jobs:
-  cypress-npm:
+  cypress:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
       - uses: cypress-io/github-action@v2
         with:
-          install: false
           browser: chrome
-          config-file: ./cypress.json
+          config-file: cypress.json
+          headless: true
   
+  # to parallelize tests executions 
   cypress-config-matrix:
     runs-on: ubuntu-latest
     strategy:
@@ -31,16 +27,27 @@ jobs:
         cypress-config: ["a", "c"]
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
-          config-file: ./cypress-${{ matrix.cypress-config }}.json
+          config-file: cypress.json
+          spec: "**/${{ matrix.cypress-config }}*.js"
+          headless: true
 
   cypress-docker:
+    runs-on: ubuntu-latest
+    container: cypress/included:4.9.0
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          config-file: cypress.json
+          headless: true
+
+  cypress-docker-npm:
+    # needs directive to have a synchronous example
+    needs: [cypress-docker]
     runs-on: ubuntu-latest
     container: cypress/included:4.9.0
     steps:
@@ -50,13 +57,27 @@ jobs:
       - run: npm ci
       - run: npm run cy:run
 
-  cypress-cucumber:
+  cucumber:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: actions/setup-node@v2.1.0
+      - uses: cypress-io/github-action@v2
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run cucumber:run
+          browser: chrome
+          config-file: cucumber.json
+          headless: true
+
+  cucumber-config-matrix:
+    needs: [cucumber]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cucumber-config: ["ac", "al"]
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          config-file: cucumber.json
+          spec: "**/${{ matrix.cucumber-config }}*.feature"
+          headless: true
