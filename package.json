@@ -11,7 +11,7 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run --browser chrome --headless -C \"cypress.json\"",
-    "cucumber:run": "cypress run --browser chrome --headless -C \"cucumber.json\""
+    "cucumber:run": "cypress run --browser chrome --headless -C cucumber.json"
   },
   "repository": {
     "type": "git",
