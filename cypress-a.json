@@ -1,5 +1,5 @@
 {
 	"video": false,
 	"numTestsKeptInMemory": 100,
-	"testFiles": "**/[a]*.*"
+	"testFiles": "**/[a]*.js"
 }

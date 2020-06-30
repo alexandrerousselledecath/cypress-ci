@@ -10,6 +10,7 @@
   },
   "scripts": {
     "cy:open": "cypress open",
+    "cy:run": "cypress run --browser chrome --headless -C \"cypress.json\"",
     "cucumber:run": "cypress run --spec \"**/*.feature\" --browser chrome --headless -C \"cucumber.json\""
   },
   "repository": {
