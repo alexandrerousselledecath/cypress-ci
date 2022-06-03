@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {},
   "optionalDependencies": {
-    "cypress": "^4.9.0"
+    "cypress": "^10.0.2"
   },
   "devDependencies": {
     "cypress-cucumber-preprocessor": "^2.5.0"
